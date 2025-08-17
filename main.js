@@ -20,18 +20,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
     if (!anchor) {
       return;
     }
-    event.preventDefault(); // Prevent the default hash change
+    //event.preventDefault();
 
-    const targetId = anchor.getAttribute("href").substring(1);
-    const sections = Array.from(document.querySelectorAll("section"));
-    const targetSection = sections.find((section) => section.id === targetId);
+    // const targetId = anchor.getAttribute("href").substring(1);
+    // const sections = Array.from(document.querySelectorAll("section"));
+    // const targetSection = sections.find((section) => section.id === targetId);
 
     if (document.startViewTransition) {
       document.startViewTransition(() => {
-        toggleSectionTarget(sections, targetSection);
+        window.location.hash = anchor.textContent;
       });
-    } else {
-      toggleSectionTarget(sections, targetSection);
     }
   });
 });
