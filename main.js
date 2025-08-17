@@ -18,4 +18,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
       toggleSectionTarget(sections, homeSection);
     });
   }
+  document.addEventListener("click", (event) => {
+    const anchor = event.target.closest("a");
+    if (!anchor) {
+      return;
+    }
+    const sections = Array.from(document.querySelectorAll("section"));
+    const tgtSection = sections.find((section, _) => {
+      if (section.id === anchor.textContent) {
+        return true;
+      }
+    });
+    document.startViewTransition(() => {
+      toggleSectionTarget(sections, tgtSection);
+    });
+  });
 });
